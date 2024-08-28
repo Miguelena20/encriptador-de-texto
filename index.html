@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es mex">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptador de Texto</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background__texto">Encriptador de Texto</div>
+    <main class="encriptador">
+        <div class="encriptador__contenido">
+            <label for="textoEntrada" class="encriptador__label">Ingrese Texto aquí</label>
+            <textarea id="textoEntrada" class="encriptador__textarea"></textarea>
+            <p class="encriptador__nota" Solo letras minúsculas y sin acento></p>
+            <button class="encriptador__boton" onclick="encriptar()">Encriptar</button>
+            <button class="encriptador__boton__desencriptador" onclick="desencriptar()">Desencriptar</button>
+        </div>
+
+        <div class="encriptador__resultado">
+            <textarea id="textoResultado" class="encriptador__textarea" readonly></textarea>
+            <button class="encriptador__boton__copiar" onclick="copiartexto()">Copiar</button>
+        </div>
+    </main>
+
+    <div class="encriptador__imagen">
+        <img src="./Encriptador de texto.png" alt="imagen de encriptacion">
+    </div>
+
+    <footer class="encriptador__footer">
+        <p>Diseñado por Guillermo Miguelena</p>
+    </footer>
+
+    <script>
+        function encriptar() {
+            let texto = document.getElementById("textoEntrada").value;
+            let textoEncriptado = texto
+                .replace(/e/g, "enter")
+                .replace(/i/g, "imes")
+                .replace(/a/g, "ai")
+                .replace(/o/g, "ober")
+                .replace(/u/g, "ufat");
+            document.getElementById("textoResultado").value = textoEncriptado;
+        }
+
+        function desencriptar() {
+            let texto = document.getElementById("textoEntrada").value;
+            let textoDesencriptado = texto
+                .replace(/enter/g, "e")
+                .replace(/imes/g, "i")
+                .replace(/ai/g, "a")
+                .replace(/ober/g, "o")
+                .replace(/ufat/g, "u");
+            document.getElementById("textoResultado").value = textoDesencriptado;
+        }
+            
+        function copiartexto() {
+            let texto = document.getElementById("textoResultado");
+            texto.select();
+            document.execCommand("copy");
+            alert("Texto copiado en el portapapeles")
+        }         
+    </script>
+</body>
+</html>
